@@ -16,6 +16,24 @@ Cube::Cube(string cubePath)
 	
 	while (getline(streamInput, currentLine))
 	{
+		
+		for (int i = 0; i < CUBE_SIZE - 1; i++) //todo : Boucle du z à compléter
+		{
+			//on "brule" le caractère "+" ici, ceci ne fait que passer par dessus.
+			getline(streamInput, currentLine);
+
+			for(int ii = 0; ii < CUBE_SIZE - 1; ii++) //todo : Boucle du y à compléter
+			{
+				getline(streamInput, currentLine);
+
+				for(int iii = 0; iii < CUBE_SIZE - 1; iii++) //todo : Boucle du x à compléter
+				{
+
+					//todo : Allocation des blocs dans le tableau 3D
+					//todo : Logique des chaînages
+				}
+			}
+		}
 		//RAPPELS
 		//1) Le symbole "+" indique qu'on passe au prochain level 
 		//2) Le premier level rencontré dans le fichier texte est celui le plus bas (niveau 0) et on monte jusqu'au dernier (niveau CUBE_SIZE - 1)

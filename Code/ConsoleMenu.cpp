@@ -74,7 +74,7 @@ void ConsoleMenu::DisplayCredits()
     cout << "|                       TRAVAIL PRATIQUE 1                        |" << endl;
     cout << "|                              R.O.B                              |" << endl;
     cout << "|                                                                 |" << endl;
-    cout << "|                             AUTEUR  :                           |" << endl;
+    cout << "|                     AUTEUR  : SAMUEL HARVEY                     |" << endl;
     cout << "|                                                                 |" << endl;
     cout << "------------------------------------------------------------------|" << endl;
     cout << endl;

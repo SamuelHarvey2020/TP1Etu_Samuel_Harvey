@@ -13,6 +13,6 @@ public:
     ~Cube();	
   
 private:
-	
+	int CUBE_SIZE = 5;
 };
 
