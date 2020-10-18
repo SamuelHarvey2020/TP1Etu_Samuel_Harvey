@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Cube.h"
+#include "Block.h"
 
 Cube::Cube(string cubePath)
 {
@@ -13,7 +14,9 @@ Cube::Cube(string cubePath)
 		//Cette exception doit être gérée
 		throw invalid_argument(exceptionCaption);
 	}
-	
+
+	Block * cube = new Block[CUBE_SIZE * CUBE_SIZE * CUBE_SIZE];
+
 	while (getline(streamInput, currentLine))
 	{
 		
@@ -22,12 +25,35 @@ Cube::Cube(string cubePath)
 			//on "brule" le caractère "+" ici, ceci ne fait que passer par dessus.
 			getline(streamInput, currentLine);
 
-			for(int ii = 0; ii < CUBE_SIZE - 1; ii++) //todo : Boucle du y à compléter
+			for(int ii = CUBE_SIZE - 1; ii > 0; ii--) //todo : Boucle du y à compléter
 			{
 				getline(streamInput, currentLine);
 
 				for(int iii = 0; iii < CUBE_SIZE - 1; iii++) //todo : Boucle du x à compléter
 				{
+					Block newBlock = Block();
+					cube[i, ii, iii] = newBlock;
+
+					newBlock.x = iii;
+					newBlock.y = ii;
+					newBlock.z = i;
+
+					newBlock.value = currentLine.at(iii);
+
+					if (newBlock.value == '1' || '2' || '3' || '4' || '5' || '6' || '7' || '8' || '9') {
+
+						//ici pour mettre la valeur en int je soustrait le code ascii de 0
+						newBlock.points = newBlock.value - '0';
+					}
+					else { newBlock.points = 0; }
+
+					if (newBlock.value == 'U') {
+						
+					}
+					if (newBlock.value == 'D') {
+
+					}
+					
 
 					//todo : Allocation des blocs dans le tableau 3D
 					//todo : Logique des chaînages
