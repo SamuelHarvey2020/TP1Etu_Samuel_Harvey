@@ -20,25 +20,23 @@ Cube::Cube(string cubePath)
 	while (getline(streamInput, currentLine))
 	{
 		
-		for (int i = 0; i < CUBE_SIZE - 1; i++) //todo : Boucle du z à compléter
+		for (int i = 0; i <= CUBE_SIZE - 1; i++) //todo : Boucle du z à compléter
 		{
 			//on "brule" le caractère "+" ici, ceci ne fait que passer par dessus.
 			getline(streamInput, currentLine);
 
-			for(int ii = CUBE_SIZE - 1; ii > 0; ii--) //todo : Boucle du y à compléter
+			for(int ii = CUBE_SIZE - 1; ii >= 0; ii--) //todo : Boucle du y à compléter
 			{
-				getline(streamInput, currentLine);
-
-				for(int iii = 0; iii < CUBE_SIZE - 1; iii++) //todo : Boucle du x à compléter
+				
+				for(int iii = 0; iii <= CUBE_SIZE - 1; iii++) //todo : Boucle du x à compléter
 				{
 					Block newBlock = Block();
-					cube[i, ii, iii] = newBlock;
 
 					newBlock.x = iii;
 					newBlock.y = ii;
 					newBlock.z = i;
 
-					newBlock.value = currentLine.at(iii);
+					newBlock.value = currentLine[iii];
 
 					if (newBlock.value == '1' || '2' || '3' || '4' || '5' || '6' || '7' || '8' || '9') {
 
@@ -49,7 +47,10 @@ Cube::Cube(string cubePath)
 
 					//todo : Allocation des blocs dans le tableau 3D
 					//todo : Logique des chaînages
+					cube[i, ii, iii] = newBlock;
 				}
+
+				getline(streamInput, currentLine);
 			}
 		}
 
@@ -65,18 +66,18 @@ Cube::Cube(string cubePath)
 	streamInput.close();
 
 
-	for (int i = 0; i < CUBE_SIZE - 1; i++) //todo : Boucle du z à compléter
+	for (int i = 0; i <= CUBE_SIZE - 1; i++)
 	{
 
-		for (int ii = CUBE_SIZE - 1; ii > 0; ii--) //todo : Boucle du y à compléter
+		for (int ii = CUBE_SIZE - 1; ii >= 0; ii--)
 		{
 
-			for (int iii = 0; iii < CUBE_SIZE - 1; iii++) //todo : Boucle du x à compléter
+			for (int iii = 0; iii <= CUBE_SIZE - 1; iii++)
 			{
-				Block actualBlock = cube[i, ii, iii];
+				Block actualBlock = this->cube[i, ii, iii];
 
 				//StartBlock
-				if (actualBlock.value = 'S') {
+				if (actualBlock.value == 'S') {
 					this->startBlock = &actualBlock;
 				}
 
@@ -104,20 +105,20 @@ Cube::Cube(string cubePath)
 					actualBlock.leftBlock = NULL;
 				}
 
-				//Bloc en face si le bloc ne fait pas partie du mur de face
-				if (actualBlock.y < 4) {
-					actualBlock.frontBlock = &cube[i, ii + 1, iii];
-				}
-				else {
-					actualBlock.frontBlock = NULL;
-				}
-
 				//Bloc a droite si le bloc ne fait pas partie du mur de droite
 				if (actualBlock.x < 4) {
 					actualBlock.rightBlock = &cube[i, ii, iii + 1];
 				}
 				else {
 					actualBlock.rightBlock = NULL;
+				}
+
+				//Bloc en face si le bloc ne fait pas partie du mur de face
+				if (actualBlock.y < 4) {
+					actualBlock.frontBlock = &cube[i, ii + 1, iii];
+				}
+				else {
+					actualBlock.frontBlock = NULL;
 				}
 
 				//Bloc derriere si le bloc ne fait pas partie du mur de derriere
@@ -127,9 +128,8 @@ Cube::Cube(string cubePath)
 				else {
 					actualBlock.behindBlock = NULL;
 				}
-				
-				cube[i, ii, iii] = actualBlock;
 
+				cube[i, ii, iii] = actualBlock;
 			}
 		}
 	}

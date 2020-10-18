@@ -47,7 +47,7 @@ void Pile::affiche()
 		Pile* pileTemporaire = new Pile;
 		do {
 			pileTemporaire->push(this->pop());
-			cout << pileTemporaire->premierNoeud->getBlock() << endl << endl;
+			cout << pileTemporaire->premierNoeud->getBlock()->x  << endl << endl;
 		} while (this->premierNoeud != NULL);
 
 		do {

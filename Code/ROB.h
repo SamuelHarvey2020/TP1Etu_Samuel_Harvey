@@ -4,6 +4,7 @@
 #include <string>
 #include "Cube.h"
 #include "pile.h"
+#include "Block.h"
 
 using namespace std;
 
@@ -19,6 +20,8 @@ public:
 private:
 	Cube* cube;
 	Pile pathToExit;
+	bool solved = false;
+	Block* currentBlock;
 };
 
 
