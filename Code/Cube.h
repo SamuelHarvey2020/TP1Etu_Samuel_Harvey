@@ -10,9 +10,12 @@ class Cube
 {
 public:
 	Cube(string cubePath);
-    ~Cube();	
+    ~Cube();
+	Block* getStartBlock();
   
 private:
-	int CUBE_SIZE = 5;
+	const int CUBE_SIZE = 5;
+	Block* cube;
+	Block* startBlock;
 };
 

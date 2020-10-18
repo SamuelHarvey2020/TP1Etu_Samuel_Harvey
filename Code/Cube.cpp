@@ -15,7 +15,7 @@ Cube::Cube(string cubePath)
 		throw invalid_argument(exceptionCaption);
 	}
 
-	Block * cube = new Block[CUBE_SIZE * CUBE_SIZE * CUBE_SIZE];
+	cube = new Block[CUBE_SIZE * CUBE_SIZE * CUBE_SIZE];
 
 	while (getline(streamInput, currentLine))
 	{
@@ -74,6 +74,11 @@ Cube::Cube(string cubePath)
 			for (int iii = 0; iii < CUBE_SIZE - 1; iii++) //todo : Boucle du x à compléter
 			{
 				Block actualBlock = cube[i, ii, iii];
+
+				//StartBlock
+				if (actualBlock.value = 'S') {
+					this->startBlock = &actualBlock;
+				}
 
 				//Bloc au dessus si le bloc est un bloc de lvlUP
 				if (actualBlock.value == 'U') {
@@ -137,4 +142,11 @@ Cube::~Cube()
 {
 	
 }
+
+Block* Cube::getStartBlock()
+{
+	return this->startBlock;
+}
+
+
 
