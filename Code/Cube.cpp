@@ -15,7 +15,7 @@ Cube::Cube(string cubePath)
 		throw invalid_argument(exceptionCaption);
 	}
 
-	cube = new Block[CUBE_SIZE * CUBE_SIZE * CUBE_SIZE];
+	this->cube = new Block[CUBE_SIZE * CUBE_SIZE * CUBE_SIZE];
 
 	while (getline(streamInput, currentLine))
 	{
@@ -147,6 +147,7 @@ Block* Cube::getStartBlock()
 {
 	return this->startBlock;
 }
+
 
 
 
