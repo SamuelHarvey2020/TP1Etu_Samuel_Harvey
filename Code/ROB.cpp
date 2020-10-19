@@ -75,5 +75,7 @@ void ROB::solvePathToExit()
 
 string ROB::getSolutionPathToExit()
 {
-	return string();
+	cout << "Le chemin de sortie est :" << endl;
+	this->pathToExit.affiche();
+	return "";
 }

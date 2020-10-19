@@ -1,6 +1,9 @@
 #include "stdafx.h"
 #include "Pile.h"
 #include <iostream>
+#include <string>
+
+using namespace std;
 
 Pile::Pile()
 {
@@ -47,7 +50,10 @@ void Pile::affiche()
 		Pile* pileTemporaire = new Pile;
 		do {
 			pileTemporaire->push(this->pop());
-			cout << pileTemporaire->premierNoeud->getBlock()->x  << endl << endl;
+			int x = pileTemporaire->premierNoeud->getBlock()->x;
+			int y = pileTemporaire->premierNoeud->getBlock()->y;
+			int z = pileTemporaire->premierNoeud->getBlock()->z;
+			cout << "[" + to_string(x) + "," + to_string(y) + "," + to_string(z) + "]" << endl << endl;
 		} while (this->premierNoeud != NULL);
 
 		do {
