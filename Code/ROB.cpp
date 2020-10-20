@@ -13,8 +13,11 @@ ROB::ROB(Cube* cube)
 
 ROB::~ROB()
 {
+
 }
 
+// la méthode de solution qui pile toute les bonnes cases dans la pile.
+// Elle semble bien codée mais évidemment mon app ne fonctionne pas jusque la.
 void ROB::solvePathToExit()
 {
 	this->pathToExit.push(cube->getStartBlock());
@@ -73,6 +76,7 @@ void ROB::solvePathToExit()
 	
 }
 
+// ici j'affiche le résultat de ma pile de solution
 string ROB::getSolutionPathToExit()
 {
 	cout << "Le chemin de sortie est :" << endl;

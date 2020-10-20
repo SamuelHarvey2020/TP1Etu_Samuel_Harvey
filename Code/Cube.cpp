@@ -11,7 +11,6 @@ Cube::Cube(string cubePath)
 	if (!streamInput)
 	{
 		string exceptionCaption = "Le fichier " + cubePath + " n'existe pas.";
-		//Cette exception doit être gérée
 		throw invalid_argument(exceptionCaption);
 	}
 
@@ -20,15 +19,15 @@ Cube::Cube(string cubePath)
 	while (getline(streamInput, currentLine))
 	{
 		
-		for (int i = 0; i <= CUBE_SIZE - 1; i++) //todo : Boucle du z à compléter
+		for (int i = 0; i <= CUBE_SIZE - 1; i++)
 		{
 			//on "brule" le caractère "+" ici, ceci ne fait que passer par dessus.
 			getline(streamInput, currentLine);
 
-			for(int ii = CUBE_SIZE - 1; ii >= 0; ii--) //todo : Boucle du y à compléter
+			for(int ii = CUBE_SIZE - 1; ii >= 0; ii--)
 			{
 				
-				for(int iii = 0; iii <= CUBE_SIZE - 1; iii++) //todo : Boucle du x à compléter
+				for(int iii = 0; iii <= CUBE_SIZE - 1; iii++)
 				{
 					Block newBlock = Block();
 
@@ -45,27 +44,18 @@ Cube::Cube(string cubePath)
 					}
 					else { newBlock.points = 0; }	
 
-					//todo : Allocation des blocs dans le tableau 3D
-					//todo : Logique des chaînages
 					cube[i, ii, iii] = newBlock;
 				}
 
 				getline(streamInput, currentLine);
 			}
 		}
-
-		//RAPPELS
-		//1) Le symbole "+" indique qu'on passe au prochain level 
-		//2) Le premier level rencontré dans le fichier texte est celui le plus bas (niveau 0) et on monte jusqu'au dernier (niveau CUBE_SIZE - 1)
-		//3) Tous les blocs doivent être alloués dynamiquement dans le tableau 3D
-		//4) Utilisez un algo simple basé sur les indices de tableau pour attribuer les pointeurs vers les blocs voisins
-        //5) N'oubliez pas d'attribuer le bloc de départ
-		//6) 2 cubes sont donnés avec ce TP, commencez avec celui de dimension 5 (plus facile à déboguer)
 	}
 
 	streamInput.close();
 
-
+	// ici je fais une boucle afin de parcourir mon tableau une deuxiemme fois pour effectuer le chainage.
+	// Malheureusement, une erreur inconnue m'empêche de bien effectuer le chainae car mon z reste a 4. 
 	for (int i = 0; i <= CUBE_SIZE - 1; i++)
 	{
 
@@ -133,14 +123,11 @@ Cube::Cube(string cubePath)
 			}
 		}
 	}
-
-	
-	
 }
 
 Cube::~Cube()
 {
-	
+	delete this->cube;
 }
 
 Block* Cube::getStartBlock()
