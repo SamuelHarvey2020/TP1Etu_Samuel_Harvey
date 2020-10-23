@@ -7,6 +7,7 @@
     <ClCompile Include="pile.cpp" />
     <ClCompile Include="Noeud.cpp" />
     <ClCompile Include="ROB.cpp" />
+    <ClCompile Include="File.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -17,5 +18,6 @@
     <ClInclude Include="pile.h" />
     <ClInclude Include="Noeud.h" />
     <ClInclude Include="ROB.h" />
+    <ClInclude Include="File.h" />
   </ItemGroup>
 </Project>

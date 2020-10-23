@@ -154,6 +154,7 @@
     <ClInclude Include="Block.h" />
     <ClInclude Include="ConsoleMenu.h" />
     <ClInclude Include="Cube.h" />
+    <ClInclude Include="File.h" />
     <ClInclude Include="Noeud.h" />
     <ClInclude Include="pile.h" />
     <ClInclude Include="ROB.h" />
@@ -163,6 +164,7 @@
   <ItemGroup>
     <ClCompile Include="ConsoleMenu.cpp" />
     <ClCompile Include="Cube.cpp" />
+    <ClCompile Include="File.cpp" />
     <ClCompile Include="Noeud.cpp" />
     <ClCompile Include="pile.cpp" />
     <ClCompile Include="ROB.cpp" />
