@@ -18,7 +18,9 @@ public:
 
 private:
 	const int CUBE_SIZE = 5;
-	Block* cube;
+
+	Block* tabBlocks[5][5][5];
+	
 	Block* startBlock;
 };
 
