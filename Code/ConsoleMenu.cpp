@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "ConsoleMenu.h"
 #include "Cube.h"
+#include "ROB.h"
 
 
 ConsoleMenu::ConsoleMenu()
@@ -93,6 +94,9 @@ bool ConsoleMenu::ManageSelection(char entry)
 		case '1':
 		{  
             Cube cube("cube5.txt");
+			ROB rob(&cube);
+			rob.solvePathToExit();
+			rob.getSolutionPathToExit();
        		system("pause");
 			system("cls");
 			break;

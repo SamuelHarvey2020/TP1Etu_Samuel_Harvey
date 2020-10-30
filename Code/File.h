@@ -8,7 +8,9 @@ public :
 	~File();
 	void ajouter(Block* _block);
 	Block* retirer();
+	void allBlocksAndPoints_toString();
 	Noeud* getPremierNoeud();
+	Noeud* getTopBlock();
 	Noeud* getDernierNoeud();
 private :
 	Noeud* premierNoeud;

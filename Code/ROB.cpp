@@ -13,7 +13,7 @@ ROB::ROB(Cube* cube)
 
 ROB::~ROB()
 {
-
+	delete this;
 }
 
 // la méthode de solution qui pile toute les bonnes cases dans la pile.
@@ -29,7 +29,7 @@ void ROB::solvePathToExit()
 
 		if (this->currentBlock->value == 'E') {
 			this->pathToExit.push(currentBlock);
-			this->solved == true;
+			this->solved = true;
 		}
 		else if(this->currentBlock->value == 'U'){
 			this->currentBlock = this->currentBlock->upBlock;
@@ -76,10 +76,18 @@ void ROB::solvePathToExit()
 	
 }
 
+void ROB::solveAllPoints(Block* startingBlock) {
+
+}
+
 // ici j'affiche le résultat de ma pile de solution
 string ROB::getSolutionPathToExit()
 {
 	cout << "Le chemin de sortie est :" << endl;
 	this->pathToExit.affiche();
+	return "";
+}
+
+string ROB::getSolutionAllPoints() {
 	return "";
 }
