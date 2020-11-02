@@ -95,6 +95,7 @@ bool ConsoleMenu::ManageSelection(char entry)
 		{  
             Cube cube("cube5.txt");
 			ROB rob(&cube);
+			cube.resetAllVisitedBlockstoFalse();
 			rob.solvePathToExit();
 			rob.getSolutionPathToExit();
        		system("pause");
@@ -107,6 +108,7 @@ bool ConsoleMenu::ManageSelection(char entry)
 		{
 			Cube cube("cube5.txt");
 			ROB rob(&cube);
+			cube.resetAllVisitedBlockstoFalse();
 			rob.solveAllPoints(cube.getStartBlock());
 			rob.getSolutionAllPoints();
 			system("pause");

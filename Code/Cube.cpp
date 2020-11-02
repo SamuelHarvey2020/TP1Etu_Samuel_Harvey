@@ -94,6 +94,23 @@ Cube::Cube(string cubePath)
 	}
 }
 
+void Cube::resetAllVisitedBlockstoFalse() {
+
+	for (int i = 0; i< CUBE_SIZE; i++) {
+
+		for (int ii = 0; ii < CUBE_SIZE; ii++) {
+
+			for (int iii = 0; iii < CUBE_SIZE; iii++) {
+
+				if (tabBlocks[i][ii][iii]->visited == true) {
+
+					tabBlocks[i][ii][iii]->visited == false;
+				}
+			}
+		}
+	}
+}
+
 Cube::~Cube()
 {
 	delete this->tabBlocks;

@@ -12,6 +12,8 @@ class Cube
 public:
 	Cube(string cubePath);
 
+	void resetAllVisitedBlockstoFalse();
+
 	~Cube();
 
 	Block* getStartBlock();
