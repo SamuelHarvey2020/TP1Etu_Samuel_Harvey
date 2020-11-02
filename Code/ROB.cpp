@@ -23,15 +23,11 @@ void ROB::solvePathToExit()
 	this->pathToExit.push(cube->getStartBlock());
 	this->currentBlock = cube->getStartBlock();
 
-	while (this->solved == false) {
+	while (this->currentBlock->value != 'E') {
 
 		this->currentBlock->visited = true;
-
-		if (this->currentBlock->value == 'E') {
-			this->pathToExit.push(currentBlock);
-			this->solved = true;
-		}
-		else if(this->currentBlock->value == 'U'){
+	
+		if(this->currentBlock->value == 'U'){
 			this->currentBlock = this->currentBlock->upBlock;
 			this->pathToExit.push(currentBlock);
 		}
@@ -73,10 +69,86 @@ void ROB::solvePathToExit()
 		}
 
 	}
+
+	if (this->currentBlock->value == 'E') {
+		this->pathToExit.push(currentBlock);
+	}
 	
 }
+//=================================================================================================================================
 
 void ROB::solveAllPoints(Block* startingBlock) {
+
+	startingBlock->visited == true;
+	int count = 0;
+
+	if (startingBlock->points != 0) {
+		this->allPoints.ajouter(startingBlock);
+	}
+
+	if (startingBlock->leftBlock->value != '*' && startingBlock->leftBlock->visited == false) {
+		count++;
+	}
+	if (startingBlock->rightBlock->value != '*' && startingBlock->rightBlock->visited == false) {
+		count++;
+	}
+	if (startingBlock->frontBlock->value != '*' && startingBlock->frontBlock->visited == false) {
+		count++;
+	}
+	if (startingBlock->value != 'S' && startingBlock->behindBlock->value != '*' && startingBlock->behindBlock->visited == false) {
+		count++;
+	}
+	if (startingBlock->value == 'U' && startingBlock->upBlock->visited == false) {
+		count++;
+	}
+	else if (startingBlock->value == 'D' && startingBlock->downBlock->visited == false) {
+		count++;
+	}
+
+	if (count == 1) {
+
+		if (startingBlock->leftBlock->value != '*' && startingBlock->leftBlock->visited == false) {
+			startingBlock = startingBlock->leftBlock;
+		}
+		else if (startingBlock->rightBlock->value != '*' && startingBlock->rightBlock->visited == false) {
+			startingBlock = startingBlock->rightBlock;
+		}
+		else if (startingBlock->frontBlock->value != '*' && startingBlock->frontBlock->visited == false) {
+			startingBlock = startingBlock->frontBlock;
+		}	
+		else if (startingBlock->value != 'S' && startingBlock->behindBlock->value != '*' && startingBlock->behindBlock->visited == false) {
+			startingBlock = startingBlock->behindBlock;
+		}
+		else if (startingBlock->value == 'U' && startingBlock->upBlock->visited == false) {
+			startingBlock = startingBlock->upBlock;
+		}
+		else if (startingBlock->value == 'D' && startingBlock->downBlock->visited == false) {
+			startingBlock = startingBlock->downBlock;
+		}
+
+		solveAllPoints(startingBlock);
+	}
+
+	if (count > 2) {
+		if (startingBlock->leftBlock->value != '*' && startingBlock->leftBlock->visited == false) {
+			solveAllPoints (startingBlock->leftBlock);
+		}
+		if (startingBlock->rightBlock->value != '*' && startingBlock->rightBlock->visited == false) {
+			solveAllPoints (startingBlock->rightBlock);
+		}
+		if (startingBlock->frontBlock->value != '*' && startingBlock->frontBlock->visited == false) {
+			solveAllPoints(startingBlock->frontBlock);
+		}
+		if (startingBlock->value != 'S' && startingBlock->behindBlock->value != '*' && startingBlock->behindBlock->visited == false) {
+			solveAllPoints(startingBlock->behindBlock);
+		}
+		if (startingBlock->value == 'U' && startingBlock->upBlock->visited == false) {
+			solveAllPoints(startingBlock->upBlock);
+		}
+		if (startingBlock->value == 'D' && startingBlock->downBlock->visited == false) {
+			solveAllPoints(startingBlock->downBlock);
+		}
+	}
 
 }
 
@@ -89,5 +161,7 @@ string ROB::getSolutionPathToExit()
 }
 
 string ROB::getSolutionAllPoints() {
+	cout << "Les points sont : " << endl;
+	this->allPoints.allBlocksAndPoints_toString();
 	return "";
 }

@@ -22,13 +22,13 @@ public:
 	string getSolutionPathToExit();
 	string getSolutionAllPoints();
 
-	Block* currentBlock;
-	bool solved = false;
 
 private:
 	Cube* cube;
 	Pile pathToExit;
 	File allPoints;
+
+	Block* currentBlock;
 };
 
 

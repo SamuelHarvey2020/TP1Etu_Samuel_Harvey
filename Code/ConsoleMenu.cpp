@@ -105,6 +105,10 @@ bool ConsoleMenu::ManageSelection(char entry)
 		//Si l'utilisateur veut résoudre la partie 2
 		case '2':
 		{
+			Cube cube("cube5.txt");
+			ROB rob(&cube);
+			rob.solveAllPoints(cube.getStartBlock());
+			rob.getSolutionAllPoints();
 			system("pause");
 			system("cls");
 			break;
